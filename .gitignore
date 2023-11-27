@@ -1,0 +1,16 @@
+# Ignore compiled TypeScript files
+*.js
+*.js.map
+
+# Ignore node_modules directory
+node_modules/
+
+# Ignore build directory
+build/
+
+# Ignore any other build or configuration files
+*.d.ts
+*.tsbuildinfo
+
+# Ignore config file 
+.json
