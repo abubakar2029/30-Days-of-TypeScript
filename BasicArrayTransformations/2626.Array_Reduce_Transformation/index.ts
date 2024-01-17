@@ -1,6 +1,6 @@
 type Fn1 = (accum: number, curr: number) => number;
 
-function reduce(nums: number[], fn: Fn, init: number): number {
+function reduce(nums: number[], fn: Fn1, init: number): number {
   if (nums.length === 0) {
     return init;
   }

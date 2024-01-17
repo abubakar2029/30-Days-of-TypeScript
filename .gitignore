@@ -13,4 +13,4 @@ build/
 *.tsbuildinfo
 
 # Ignore config file 
-!*.json
+*.json
