@@ -7,7 +7,7 @@ type JSONValue1 =
   | { [key: string]: JSONValue1 };
 type Fn3 = (...args: JSONValue1[]) => void;
 
-function cancellable(fn: Fn3, args: JSONValue1[], t: number): Function {
+function cancellable1(fn: Fn3, args: JSONValue1[], t: number): Function {
   const timerid = setTimeout(() => fn(...args), t);
   return () => {
     clearTimeout(timerid);
@@ -37,7 +37,7 @@ const log = (...argsArr: JSONValue1[]) => {
   result.push({ time: diff, returned: fn1(...argsArr) });
 };
 
-const cancel = cancellable(log, args, t);
+const cancel = cancellable1(log, args, t);
 
 const maxT = Math.max(t, cancelTimeMs);
 
@@ -59,7 +59,7 @@ setTimeout(() => {
  *      result.push({"time": diff, "returned": fn(...argsArr)});
  *  }
  *
- *  const cancel = cancellable(log, args, t);
+ *  const cancel = cancellable1(log, args, t);
  *
  *  const maxT = Math.max(t, cancelTimeMs);
  *
