@@ -12,6 +12,7 @@ function isEmpty(obj: Obj): boolean {
   if (obj) {
     for (const iterator in obj) {
       count++;
+      break;
     }
   }
   return count === 0 ? true : false;
