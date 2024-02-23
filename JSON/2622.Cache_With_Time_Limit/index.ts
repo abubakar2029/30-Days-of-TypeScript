@@ -1,11 +1,11 @@
 class TimeLimitedCache {
   private cache: Map<number, { value: number; expiration: number }> = new Map();
-  // constructor() {}
 
   set(key: number, value: number, duration: number): boolean {
     const existingEntry = this.cache.get(key);
     // if (this.cache.has(key) && existingEntry.expiration > Date.now()) {
     if (existingEntry && existingEntry.expiration > Date.now()) {
+      this.cache.set(key, { value, expiration: Date.now() + duration });
       return true;
     } else {
       this.cache.set(key, { value, expiration: duration + Date.now() });
@@ -20,9 +20,9 @@ class TimeLimitedCache {
       // this.cache.has(key) &&
       existingEntry &&
       existingEntry.expiration > Date.now()
-    ) {
+    )
       return existingEntry.value;
-    } else return -1;
+    else return -1;
   }
 
   count(): number {
@@ -33,7 +33,6 @@ class TimeLimitedCache {
     return count;
   }
 }
-
 
 // class TimeLimitedCache {
 //   private data: Map<number, { value: number, expiration: number }> = new Map();
