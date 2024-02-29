@@ -5,11 +5,12 @@ class ArrayWrapper {
   }
 
   valueOf(): number {
-    let sum = 0;
-    for (let element of this.arr) {
-      sum += element;
-    }
-    return sum;
+    return this.arr.reduce((sum, current) => sum + current, 0);
+    // let sum = 0;
+    // for (let element of this.arr) {
+    //   sum += element;
+    // }
+    // return sum;
   }
 
   toString(): string {
