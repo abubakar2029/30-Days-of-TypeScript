@@ -1,19 +1,16 @@
 type Fn99<T> = () => Promise<T>;
 
-let wait = () => {};
 function promiseAll<T>(functions: Fn99<T>[]): Promise<T[]> {
   return new Promise(async (res, rej) => {
     let results: T[] = [];
-    let r;
     for (let i = 0; i < functions.length; i++) {
-      r = await functions[i]()
+      functions[i]()
         .then((r) => {
-          results.push(r);
-          if (i === functions.length - 1) res(results);
+          results[i] = r;
+          if (results.filter((_) => _ != null).length === functions.length)
+            res(results);
         })
-        .catch((e) => {
-          rej(e);
-        });
+        .catch(rej);
     }
   });
 }
