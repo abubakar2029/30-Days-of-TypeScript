@@ -35,3 +35,35 @@ function compactObject(obj: Obj21): Obj21 {
 }
 const r = compactObject({ a: null, b: [false, 1] });
 console.log(r);
+
+// Found an optimized solution in Solutions
+// type JSONValue = null | boolean | number | string | JSONValue[] | { [key: string]: JSONValue };
+// type Obj = Record<string, JSONValue> | Array<JSONValue>;
+
+// const compactObject = (obj: Obj): Obj => {
+//     if (Array.isArray(obj)) {
+//         const newArray = [];
+
+//         for (const item of obj) {
+//             if (item) {
+//                 newArray.push(typeof item === 'object' ? compactObject(item) : item);
+//             }
+//         }
+
+//         return newArray;
+//     }
+
+//     for (const [key, value] of Object.entries(obj)) {
+//         if (!value) {
+//             delete obj[key];
+
+//             continue;
+//         }
+
+//         if (typeof value === 'object') {
+//             obj[key] = compactObject(value);
+//         }
+//     }
+
+//     return obj;
+// };
