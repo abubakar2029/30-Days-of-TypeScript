@@ -15,3 +15,6 @@ build/
 # Ignore config file 
 *.json
 *.html
+
+# Ignore random files
+.ini
